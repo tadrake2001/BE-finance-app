@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  # Dịch vụ MongoDB
+  mongodb:
+    image: mongo:latest # Sử dụng image MongoDB phiên bản mới nhất
+    container_name: finace # Đặt tên cho container để dễ quản lý
+    restart: always # Tự động khởi động lại container nếu nó bị dừng
+    ports:
+      # Ánh xạ cổng 27017 của container ra cổng 27021 trên máy host
+      # Bạn có thể kết nối với MongoDB qua localhost:27021
+      - "27021:27017"
+    environment:
+      # Thiết lập thông tin đăng nhập cho người dùng root
+      # Thay đổi 'your_username' và 'your_password' thành thông tin bạn muốn
+      MONGO_INITDB_ROOT_USERNAME: tadrake2001
+      MONGO_INITDB_ROOT_PASSWORD: 21032001
+    volumes:
+      # Gắn một volume để lưu trữ dữ liệu MongoDB
+      # Dữ liệu sẽ được giữ lại ngay cả khi container bị xóa và tạo lại
+      - mongo-data:/data/db
+
+# Định nghĩa volume để lưu trữ dữ liệu
+volumes:
+  mongo-data:
+    driver: local
