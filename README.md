@@ -2,7 +2,7 @@ npm i
 
 docker-compose up
 
-cp .env.example .env.local
+cp .env.example .env
 
 # Chỉnh sửa .env.local với credentials thực
 
